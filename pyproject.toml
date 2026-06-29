@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "complex-tensor"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["torch"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.pytest.markers]
+nightly = "requires nightly ops to be filled in from torch._subclasses.complex_tensor"
+new_op = "new op not yet in nightly; expected to fail until implemented"
